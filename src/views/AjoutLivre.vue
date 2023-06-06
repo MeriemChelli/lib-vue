@@ -10,11 +10,11 @@
       </div>
       <div class="form-group">
         <label for="qtestock" class="form-label">Quantité</label>
-        <input type="number" id="qtestock" class="form-input" v-model="livre.qtestock" />
+        <input type="number" id="qtestock" class="form-input" v-model="livre.qtestock"  min="1" />
       </div>
       <div class="form-group">
         <label for="prix" class="form-label">Prix</label>
-        <input type="number" id="prix" class="form-input" v-model="livre.prix" />
+        <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" />
       </div>
       <button type="submit" class="submit-btn" >Ajouter livre</button>
 

@@ -13,8 +13,8 @@
 
   <div class="q-pa-md">
     <div class="q-gutter-md">
-      <q-input v-model="text" label="Title" color="warning" />
-      <q-btn color="warning" label="Recherche" />
+      <q-input v-model="this.motCle" label="Title" color="warning" />
+      <q-btn color="warning" label="Recherche" @click="chercherLivre()" />
 
     </div>
   </div>
@@ -75,6 +75,7 @@
 
 <script>
 import { ref } from 'vue'
+const motCle = ref("");
 
 export default {
 
@@ -126,7 +127,19 @@ export default {
       this.selectedRowId = id;
       this.confirm = true;
     },
+chercherLivre(){
+  fetch( "https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres?search=" +this.motCle)
+    .then(response => response.json())
+    .then(dataJSON => {
+      this.rows = dataJSON;
+      console.log(dataJSON)
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
 
+
+},
 
     onDelete(row, id) {
 
@@ -178,7 +191,12 @@ export default {
         return response.json();
       })
       .then((dataJSON) => {
-        this.AfficherListeLivre();
+        if(this.motCle){
+        this.chercherLivre();
+        }
+        else{
+          this.AfficherListeLivre();
+        }
 
 
       })
@@ -210,7 +228,12 @@ export default {
         return response.json();
       })
       .then((dataJSON) => {
-        this.AfficherListeLivre();
+        if(this.motCle){
+        this.chercherLivre();
+        }
+        else{
+          this.AfficherListeLivre();
+        }
 
 
       })
