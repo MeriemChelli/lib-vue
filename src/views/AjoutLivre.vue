@@ -6,15 +6,15 @@
     <form @submit="onSubmit" class="my-form">
       <div class="form-group">
         <label for="titre" class="form-label">Titre</label>
-        <input type="text" id="titre" class="form-input" v-model="livre.titre" />
+        <input type="text" id="titre" class="form-input" v-model="livre.titre"  required/>
       </div>
       <div class="form-group">
         <label for="qtestock" class="form-label">Quantité</label>
-        <input type="number" id="qtestock" class="form-input" v-model="livre.qtestock"  min="1" />
+        <input type="number" id="qtestock" class="form-input" v-model="livre.qtestock"  min="1"  required/>
       </div>
       <div class="form-group">
         <label for="prix" class="form-label">Prix</label>
-        <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" />
+        <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" required />
       </div>
       <button type="submit" class="submit-btn" >Ajouter livre</button>
     
@@ -58,6 +58,7 @@ function addLivre(l) {
     method: "POST",
     headers: myHeaders,
     body: JSON.stringify({
+
       titre: l.titre,
       qtestock: l.qtestock,
       prix: l.prix,
@@ -69,7 +70,7 @@ function addLivre(l) {
 
     })
     .then((dataJSON) => {
-      console.log("eedfd",dataJSON);
+      console.log("eedfdkjsdnskjdfnskdfnksdjfnksjdnfksjdnfk",dataJSON);
 
 
     
