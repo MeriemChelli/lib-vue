@@ -13,7 +13,7 @@
 
   <div class="q-pa-md">
     <div class="q-gutter-md">
-      <q-input v-model="this.motCle" label="Title" color="warning" />
+      <q-input v-model="this.motCle" label="Title" color="warning"   />
       <q-btn color="warning" label="Recherche" @click="chercherLivre()" />
 
     </div>

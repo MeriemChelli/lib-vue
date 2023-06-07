@@ -17,7 +17,7 @@
         <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" />
       </div>
       <button type="submit" class="submit-btn" >Ajouter livre</button>
-
+    
     </form>
   </div>
 
@@ -46,6 +46,7 @@
 <script setup>
 import { reactive } from "vue";
 import Livre from "../Livre.js";
+
 const livre = reactive(Livre);
 
 
@@ -65,9 +66,10 @@ function addLivre(l) {
   fetch(url, fetchOptions)
     .then((response) => {
       return response.json();
+
     })
     .then((dataJSON) => {
-      console.log(dataJSON);
+      console.log("eedfd",dataJSON);
 
 
     

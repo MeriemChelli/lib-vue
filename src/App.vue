@@ -18,7 +18,7 @@ import {  RouterView } from 'vue-router'
       <q-tabs align="left">
         <q-route-tab to="/page1" label="Rechereche des livres" />
         <q-route-tab to="/page2" label="Ajouter un livre" />
-        <q-route-tab to="/page3" label="About Us" />
+        <q-route-tab to="/page3" label="à propos" />
       </q-tabs>
     </q-header>
 
