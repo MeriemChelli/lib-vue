@@ -16,7 +16,7 @@
         <label for="prix" class="form-label">Prix</label>
         <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" required />
       </div>
-      <button type="submit" class="submit-btn" >Ajouter livre</button>
+      <button type="submit" class="submit-btn"  click="">Ajouter livre</button>
     
     </form>
   </div>
@@ -84,9 +84,7 @@ function onSubmit() {
 
   addLivre(livre); // Call the addLivre function with the reactive 'livre' object
   
-  livre.titre = ""; // Clear the form fields after submission
-  livre.qtestock = "";
-  livre.prix = "";
+
 }
 
 </script>
