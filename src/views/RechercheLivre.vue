@@ -166,27 +166,14 @@ export default {
 
 
     },
-
+// ici Ondeletelivre cad si la quantité == 1 alors => supprimer livrecompletement sinon qtestock - 1 ( le bouton - )
     onDeleteLivre(row, id) {
 
-      const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres/${id}`
-      const fetchOptions = { method: "DELETE" };
+      
 
       if (row.qtestock == 1) {
 
-        fetch(url, fetchOptions)
-          .then((response) => {
-            return response.json();
-          })
-          .then((dataJSON) => {
-            console.log(this.selectedRowId)
-            this.AfficherListeLivre();
-
-
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        this.deleteLivreCompletement(id)
         // Code pour supprimer la ligne avec this.selectedRowId
         console.log('Supprimer la ligne avec l\'ID:', this.selectedRowId);
         this.confirm = false;

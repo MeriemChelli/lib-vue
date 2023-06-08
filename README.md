@@ -1,12 +1,13 @@
 # lib-vue
 
 Projet Bibiliothèque 
-# pourquoi j'ai choisi le framework Quasar ? 
+# Quasar
 
 Les plugins Quasar offrent une solution complète et productive pour le développement d'applications Vue.js. Voici quelques-uns des avantages qu'ils offrent :
 
--Des interfaces utilisateur attrayantes et réactives, grâce à une conception soignée et à des composants visuellement agréables.
--Une intégration transparente avec Vue.js, permettant une utilisation facile et fluide des fonctionnalités du framework.
+1-Une vaste bibliothèque de composants prêts à l'emploi, ce qui permet de gagner du temps et d'accélérer le processus de développement.
+2-Des interfaces utilisateur attrayantes et réactives, grâce à une conception soignée et à des composants visuellement agréables.
+3-Une intégration transparente avec Vue.js, permettant une utilisation facile et fluide des fonctionnalités du framework.
  # DEMO APP 
  * ajout Livre
 ![Description de l'image](src/assets/c2.png)
@@ -24,7 +25,7 @@ Rechercher un livre
 npm install
 ```
 
-### Execution
+### Exécution
 
 ```sh
 npm run dev
