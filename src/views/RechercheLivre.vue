@@ -192,7 +192,7 @@ export default {
         this.confirm = false;
       }
       else {
-        this.supprimerUnLivre(row)
+        this.supprimerUneQuantite(row)
       }
     },
 
@@ -221,7 +221,7 @@ export default {
 
     
 
-    supprimerUnLivre(row) {
+    supprimerUneQuantite(row) {
 
       const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres`
 
