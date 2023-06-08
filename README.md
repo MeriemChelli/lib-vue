@@ -17,20 +17,16 @@ Rechercher un livre
 
 
 
-## Project Setup
+## Projet Setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Execution
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
 
-```sh
-npm run build
-```
