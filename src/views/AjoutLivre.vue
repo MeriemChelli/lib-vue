@@ -16,8 +16,7 @@
         <label for="prix" class="form-label">Prix</label>
         <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" required />
       </div>
-      <input type="submit" class="submit-btn"  value="Ajouter livre" :disabled="loading"
-          :value="loading ? 'Chargement...' : 'Ajouter livre'" > 
+      <input type="submit" class="submit-btn"  value="Ajouter livre" > 
     
     </form>
   </div>
@@ -47,7 +46,6 @@
 
 <script setup>
 import Swal from 'sweetalert2'
-import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 import { reactive,ref } from "vue";
@@ -102,12 +100,10 @@ function showNotif(l) {
     showConfirmButton: false, // Masquer le bouton OK
     timer: 3000, // Durée en millisecondes avant de masquer la notification
     timerProgressBar: true // Afficher une barre de progression pendant le délai
-  }).then(() => {
-    // Réinitialiser les valeurs des champs de livre
-    l.titre = "";
-    l.qtestock = "";
-    l.prix = "";
   });
+  setTimeout(() => {
+    location.reload();
+  }, 3000);
 }
 
 

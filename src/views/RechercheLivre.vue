@@ -13,7 +13,7 @@
 
   <div class="q-pa-md">
     <div class="q-gutter-md">
-      <q-input v-model="this.motCle" label="Title" color="warning"   />
+      <q-input v-model="this.motCle" label="Title" color="warning" />
       <q-btn color="warning" label="Recherche" @click="chercherLivre()" />
 
     </div>
@@ -34,7 +34,7 @@
             <button @click="AddStock(row)">
               <i class="material-icons">add</i>
             </button>
-            <button  v-if="row.qtestock === 1"  @click="showConfirmation(row,row.id)">
+            <button v-if="row.qtestock === 1" @click="showConfirmation(row, row.id)">
               <i class="material-icons">delete</i>
             </button>
             <button v-else @click="onDelete(row, row.id)">
@@ -55,7 +55,7 @@
       <q-card-actions align="right">
         <q-btn flat label="Non" color="warning" @click="confirm = false" />
 
-        <q-btn flat label="Oui" color="warning" @click="onDelete(selectedRow,selectedRowId)" />
+        <q-btn flat label="Oui" color="warning" @click="onDelete(selectedRow, selectedRowId)" />
 
       </q-card-actions>
     </q-card>
@@ -122,24 +122,24 @@ export default {
       console.log('Modifier la ligne avec l\'ID:', id);
     },
 
-    showConfirmation(row,id) {
-      this.selectedRow=row
+    showConfirmation(row, id) {
+      this.selectedRow = row
       this.selectedRowId = id;
       this.confirm = true;
     },
-chercherLivre(){
-  fetch( "https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres?search=" +this.motCle)
-    .then(response => response.json())
-    .then(dataJSON => {
-      this.rows = dataJSON;
-      console.log(dataJSON)
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+    chercherLivre() {
+      fetch("https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres?search=" + this.motCle)
+        .then(response => response.json())
+        .then(dataJSON => {
+          this.rows = dataJSON;
+          console.log(dataJSON)
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
 
 
-},
+    },
 
     onDelete(row, id) {
 
@@ -169,114 +169,105 @@ chercherLivre(){
         this.supprimerUnLivre(row)
       }
     },
-  
-  supprimerUnLivre(row) {
 
-    const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres`
+    supprimerUnLivre(row) {
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const fetchOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: JSON.stringify({
-        id: row.id,
-        titre: row.titre,
-        prix: row.prix,
-        qtestock: row.qtestock - 1,
-      }),
-    };
-    fetch(url, fetchOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((dataJSON) => {
-        if(this.motCle){
-        this.chercherLivre();
-        }
-        else{
-          this.AfficherListeLivre();
-        }
+      const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres`
 
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-  },
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const fetchOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: JSON.stringify({
+          id: row.id,
+          titre: row.titre,
+          prix: row.prix,
+          qtestock: row.qtestock - 1,
+        }),
+      };
+      fetch(url, fetchOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((dataJSON) => {
+          if (this.motCle) {
+            this.chercherLivre();
+          }
+          else {
+            this.AfficherListeLivre();
+          }
 
 
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-  AddStock(row) {
-    const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres`
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const fetchOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: JSON.stringify({
-        id: row.id,
-        titre: row.titre,
-        prix: row.prix,
-        qtestock: row.qtestock + 1,
-      }),
-    };
-    fetch(url, fetchOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((dataJSON) => {
-        if(this.motCle){
-        this.chercherLivre();
-        }
-        else{
-          this.AfficherListeLivre();
-        }
-
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    },
 
 
 
+    AddStock(row) {
+      const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres`
+
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const fetchOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: JSON.stringify({
+          id: row.id,
+          titre: row.titre,
+          prix: row.prix,
+          qtestock: row.qtestock + 1,
+        }),
+      };
+      fetch(url, fetchOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((dataJSON) => {
+          if (this.motCle) {
+            this.chercherLivre();
+          }
+          else {
+            this.AfficherListeLivre();
+          }
+
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
 
 
-
-,
-
-
-
-
-AfficherListeLivre() {
-  fetch("https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres")
-    .then(response => response.json())
-    .then(dataJSON => {
-      this.rows = dataJSON;
-      console.log(dataJSON)
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+    AfficherListeLivre() {
+      fetch("https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres")
+        .then(response => response.json())
+        .then(dataJSON => {
+          this.rows = dataJSON;
+          console.log(dataJSON)
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
 
 
 
-},
+    },
 
   },
 
-setup() {
-  return {
-    slide: ref(1),
-    confirm: ref(false)
-  }
+  setup() {
+    return {
+      slide: ref(1),
+      confirm: ref(false)
+    }
 
-}
+  }
 }
 
 </script>
