@@ -4,8 +4,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { Quasar } from 'quasar'
-import Vue3Geolocation from 'vue3-geolocation';
-
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 // Import icon libraries
 import '@quasar/extras/material-icons/material-icons.css'
@@ -14,9 +14,8 @@ import '@quasar/extras/material-icons/material-icons.css'
 import 'quasar/src/css/index.sass'
 
 const app = createApp(App)
-
+app.use(VueSweetalert2);
 app.use(router)
-app.use(Vue3Geolocation);
 app.use(Quasar, {
     plugins: {}, // import Quasar plugins and add here
   })

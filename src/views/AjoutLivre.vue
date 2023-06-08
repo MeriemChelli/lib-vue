@@ -3,7 +3,7 @@
 <div class="q-pa-md">
   <div class="q-gutter-md" style="max-width: 500px">
     <h1>Ajouter Nouveau livre</h1>
-    <form @submit="onSubmit" class="my-form">
+    <form @submit.prevent="addLivre(livre)" class="my-form">
       <div class="form-group">
         <label for="titre" class="form-label">Titre</label>
         <input type="text" id="titre" class="form-input" v-model="livre.titre"  required/>
@@ -16,7 +16,8 @@
         <label for="prix" class="form-label">Prix</label>
         <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" required />
       </div>
-      <button type="submit" class="submit-btn"  click="">Ajouter livre</button>
+      <input type="submit" class="submit-btn"  value="Ajouter livre" :disabled="loading"
+          :value="loading ? 'Chargement...' : 'Ajouter livre'" > 
     
     </form>
   </div>
@@ -38,19 +39,28 @@
       </q-toolbar>
     </q-footer>
 
-    
+    <Swal v-if="showAlert" @confirm="resetLivre" title="Notification" text="Livre ajouté avec succès." icon="success" />
+
    
 
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import Livre from "../Livre.js";
+import Swal from 'sweetalert2'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
+import { reactive,ref } from "vue";
+import Livre from "../Livre.js";
+const loading = ref(false);
 const livre = reactive(Livre);
+const showAlert = ref(false);
 
 
 function addLivre(l) {
+  loading.value = true; // Désactiver le bouton pendant la requête
+
+  console.log("sdksdlfknsdlkfnl")
   let url = "https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres";
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -66,26 +76,41 @@ function addLivre(l) {
   };
   fetch(url, fetchOptions)
     .then((response) => {
+
       return response.json();
 
     })
     .then((dataJSON) => {
-      console.log("eedfdkjsdnskjdfnskdfnksdjfnksjdnfksjdnfk",dataJSON);
+      loading.value = false; // Activer le bouton une fois la requête terminée
+      showNotif(livre); // Afficher la notification
+    
 
 
     
     })
     .catch((error) => {
+      loading.value = false;
       console.log(error);
     });
+    
+}
+function showNotif(l) {
+  Swal.fire({
+    title: 'Notification',
+    text: 'Livre ajouté avec succès.',
+    icon: 'success',
+    showConfirmButton: false, // Masquer le bouton OK
+    timer: 3000, // Durée en millisecondes avant de masquer la notification
+    timerProgressBar: true // Afficher une barre de progression pendant le délai
+  }).then(() => {
+    // Réinitialiser les valeurs des champs de livre
+    l.titre = "";
+    l.qtestock = "";
+    l.prix = "";
+  });
 }
 
-function onSubmit() {
 
-  addLivre(livre); // Call the addLivre function with the reactive 'livre' object
-  
-
-}
 
 </script>
 <style>
