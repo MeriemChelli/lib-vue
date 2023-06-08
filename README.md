@@ -8,9 +8,11 @@ exemple : au lieu  d'écrire  <input v-model="this.motCle" label="Title" color="
 En outre, Quasar est flexible et permet une personnalisation facile. Je peux utiliser les composants pré-conçus tels quels, ou je peux les personnaliser en modifiant le CSS dans la balise <style>. Cela me permet d'adapter l'apparence des composants à mes besoins spécifiques et de créer une interface graphique qui correspond à mes préférences et à celles de mon projet de bibliothèque.
  # DEMO APP 
  * ajout Livre
+![Description de l'image](src/assets/c2.png)
+Suppression avec alerte de confirmation
 ![Description de l'image](src/assets/c1.png)
-![Description de l'image](C:\Users\Mchelli\lib-vue\src\assets\c2.png)
-![Description de l'image](C:\Users\Mchelli\lib-vue\src\assets\c3.png)
+Rechercher un livre
+![Description de l'image](src/assets/c3.png)
 
 
 
