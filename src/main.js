@@ -14,6 +14,7 @@ import '@quasar/extras/material-icons/material-icons.css'
 import 'quasar/src/css/index.sass'
 
 const app = createApp(App)
+// message de confirmation 
 app.use(VueSweetalert2);
 app.use(router)
 app.use(Quasar, {
