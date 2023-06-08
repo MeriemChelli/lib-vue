@@ -38,7 +38,7 @@
               <i class="material-icons">remove</i>
             </button>
 
-            <button v-else @click="onDelete(row, row.id)">
+            <button v-else @click="onDeleteLivre(row, row.id)">
               <i class="material-icons">remove</i>
             </button>
             <button  @click="showConfirmation2(row, row.id)">
@@ -60,7 +60,7 @@
       <q-card-actions align="right">
         <q-btn flat label="Non" color="warning" @click="confirm = false" />
 
-        <q-btn flat label="Oui" color="warning" @click="onDelete(selectedRow, selectedRowId)" />
+        <q-btn flat label="Oui" color="warning" @click="onDeleteLivre(selectedRow, selectedRowId)" />
 
 
       </q-card-actions>
@@ -167,7 +167,7 @@ export default {
 
     },
 
-    onDelete(row, id) {
+    onDeleteLivre(row, id) {
 
       const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres/${id}`
       const fetchOptions = { method: "DELETE" };

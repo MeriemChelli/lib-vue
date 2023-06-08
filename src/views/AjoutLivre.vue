@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
         <label for="prix" class="form-label">Prix</label>
-        <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="1" required />
+        <input type="number" id="prix" class="form-input" v-model="livre.prix"  min="0" required />
       </div>
       <input type="submit" class="submit-btn"  value="Ajouter livre" > 
     
