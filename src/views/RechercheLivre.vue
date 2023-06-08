@@ -35,11 +35,16 @@
               <i class="material-icons">add</i>
             </button>
             <button v-if="row.qtestock === 1" @click="showConfirmation(row, row.id)">
-              <i class="material-icons">delete</i>
+              <i class="material-icons">remove</i>
             </button>
+
             <button v-else @click="onDelete(row, row.id)">
+              <i class="material-icons">remove</i>
+            </button>
+            <button  @click="showConfirmation2(row, row.id)">
               <i class="material-icons">delete</i>
             </button>
+            
           </td>
         </tr>
       </tbody>
@@ -56,6 +61,25 @@
         <q-btn flat label="Non" color="warning" @click="confirm = false" />
 
         <q-btn flat label="Oui" color="warning" @click="onDelete(selectedRow, selectedRowId)" />
+
+
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+
+
+
+  <q-dialog v-model="confirm2" persistent>
+    <q-card>
+      <q-card-section class="row items-center">
+        <span class="q-ml-sm">Vous voulez vraiment supprimer ce livre ?</span>
+      </q-card-section>
+
+      <q-card-actions align="right">
+        <q-btn flat label="Non" color="warning" @click="confirm2 = false" />
+
+        <q-btn flat label="Oui" color="warning" @click="deleteLivreCompletement( selectedRowId)" />
+
 
       </q-card-actions>
     </q-card>
@@ -117,15 +141,17 @@ export default {
 
   },
   methods: {
-    onEdit(id) {
-      // Code pour l'action de modification
-      console.log('Modifier la ligne avec l\'ID:', id);
-    },
+  
 
     showConfirmation(row, id) {
       this.selectedRow = row
       this.selectedRowId = id;
       this.confirm = true;
+    },
+    showConfirmation2(row, id) {
+      this.selectedRow = row
+      this.selectedRowId = id;
+      this.confirm2 = true;
     },
     chercherLivre() {
       fetch("https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres?search=" + this.motCle)
@@ -169,6 +195,31 @@ export default {
         this.supprimerUnLivre(row)
       }
     },
+
+
+     deleteLivreCompletement(id) {
+      const url = `https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/5/livres/${id}`
+      const fetchOptions = { method: "DELETE" };
+
+  fetch(url , fetchOptions)
+    .then((response) => {
+      return response.json();
+    })
+    .then((dataJSON) => {
+      this.AfficherListeLivre()
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    this.confirm2 = false;
+
+}
+,
+
+
+
+
+    
 
     supprimerUnLivre(row) {
 
@@ -264,7 +315,8 @@ export default {
   setup() {
     return {
       slide: ref(1),
-      confirm: ref(false)
+      confirm: ref(false),
+      confirm2: ref(false)
     }
 
   }
