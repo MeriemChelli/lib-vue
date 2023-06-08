@@ -9,7 +9,7 @@ En outre, Quasar est flexible et permet une personnalisation facile. Je peux uti
  # DEMO APP 
  * ajout Livre
 ![Description de l'image](src/assets/c2.png)
-Suppression avec alerte de confirmation
+Suppression avec un message de confirmation
 ![Description de l'image](src/assets/c1.png)
 Rechercher un livre
 ![Description de l'image](src/assets/c3.png)
