@@ -2,10 +2,11 @@
 
 Projet Bibiliothèque 
 # pourquoi j'ai choisi le framework Quasar ? 
-J'ai choisi le framework Quasar pour mon projet de bibliothèque pour plusieurs raisons. Tout d'abord, Quasar offre une solution complète qui comprend une large gamme de composants prêts à l'emploi pour la construction d'interfaces utilisateur attrayantes et réactives.
 
+Les plugins Quasar offrent une solution complète et productive pour le développement d'applications Vue.js. Voici quelques-uns des avantages qu'ils offrent :
 
-En outre, Quasar est flexible et permet une personnalisation facile. Je peux utiliser les composants pré-conçus tels quels, ou je peux les personnaliser en modifiant le CSS dans la balise style. Cela me permet d'adapter l'apparence des composants à mes besoins spécifiques et de créer une interface graphique qui correspond à mes préférences et à celles de mon projet de bibliothèque.
+-Des interfaces utilisateur attrayantes et réactives, grâce à une conception soignée et à des composants visuellement agréables.
+-Une intégration transparente avec Vue.js, permettant une utilisation facile et fluide des fonctionnalités du framework.
  # DEMO APP 
  * ajout Livre
 ![Description de l'image](src/assets/c2.png)
